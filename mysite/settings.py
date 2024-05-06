@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'myapp'  # aqui podemos definir nuestras aplicaciones para que sean tomadas en cuenta para la db
 ]
 
 MIDDLEWARE = [
