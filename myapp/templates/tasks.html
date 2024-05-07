@@ -1,0 +1,13 @@
+<h1>TASKS VIEW</h1>
+
+<section>
+    <!-- Podemos iterar un objeto con un for de la siguiente manera -->
+    {% for task in tasks %}
+    <div>
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+        <p>Project: {{ task.project.name }}</p>
+        <button>Delete</button>
+    </div>
+    {% endfor %}
+</section>
