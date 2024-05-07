@@ -1,13 +1,40 @@
+{% extends './layouts/base.html' %}
+
+{% block content%}
+<!-- Las vistas son procesadas por el modulo JINJA -->
 <h1>TASKS VIEW</h1>
 
 <section>
-    <!-- Podemos iterar un objeto con un for de la siguiente manera -->
+    {# Note: Podemos iterar un objeto con un for de la siguiente manera #}
     {% for task in tasks %}
     <div>
-        <h2>{{ task.title }}</h2>
+        <h2>
+            {% if task.done == True %}
+            ✅
+            {% else %}
+            🕐
+            {% endif%}
+            {{ task.title }}
+        </h2>
+        <!-- Podemos definir condicionales de esta manera  -->
+        {% if task.done == True %}
+        <p>Tarea realizada</p>
+        {% else %}
+        <p>Tarea pendiente</p>
+        {% endif %}
         <p>{{ task.description }}</p>
         <p>Project: {{ task.project.name }}</p>
         <button>Delete</button>
+        {% if task.done == True %}
+        <button>
+            Completado ✅
+        </button>
+        {% else %}
+        <button>
+            No completado ❌
+        </button>
+        {% endif%}
     </div>
     {% endfor %}
 </section>
+{% endblock%}

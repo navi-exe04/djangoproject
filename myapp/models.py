@@ -20,6 +20,7 @@ class Task(models.Model):
     # podemos hacer referencia a otras clases
     # on_delete = models.CASCADE permite eliminar los registros que esten asociados
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    done = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title + " - " + self.project.name

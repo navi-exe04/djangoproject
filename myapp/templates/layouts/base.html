@@ -1,0 +1,21 @@
+{# Podemos crear templates que se pueden usar en otras vistas #}
+<nav>
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/about">About</a>
+        </li>
+        <li>
+            <a href="/projects">Projects</a>
+        </li>
+        <li>
+            <a href="/tasks">Tasks</a>
+        </li>
+    </ul>
+</nav>
+
+{# Definimos un block content vacio porque no sabemos que otros templates se usaran#}
+{% block content %}
+{% endblock %}
