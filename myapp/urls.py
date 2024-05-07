@@ -9,5 +9,6 @@ urlpatterns = [
     # podemos especificar que parametros esperamos dentro de la url
     path('hello/<str:username>', views.hello),
     path('projects/', views.projects),
-    path('tasks/', views.tasks)
+    path('tasks/', views.tasks),
+    path('create_task/', views.create_task)
 ]

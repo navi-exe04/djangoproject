@@ -1,0 +1,15 @@
+{%extends './layouts/base.html'%}
+
+{%block content%}
+<h1>Create a new task</h1>
+
+
+{# Podemos traer formularios definidos #}
+<form method="POST">
+    {# el csrf_token permite mandar informacion de un metodo post #}
+    {% csrf_token %}
+    {{ form }}
+    <button>Save</button>
+</form>
+
+{%endblock%}

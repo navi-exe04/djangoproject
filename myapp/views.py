@@ -2,7 +2,8 @@ from django.http import HttpResponse, JsonResponse
 # podemos importar las tablas de la db para manipularlas
 from .models import Project, Task
 # esta funcion permite obtener un objeto o mandar un error 404 directamente
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from .forms import CreateNewTask
 
 # Create your views here.
 
@@ -46,3 +47,19 @@ def tasks(request):
     return render(request, 'tasks.html', {
         'tasks': tasks
     })
+
+
+def create_task(request):
+    if request.method == 'GET':
+        # renderiza la vista del formulario
+        return render(request, 'create_task.html', {
+            'form': CreateNewTask()
+        })
+    else:
+        # podemos procesar informacion recibida desde front
+        Task.objects.create(
+            title=request.POST['title'],
+            description=request.POST['description'],
+            project_id=2
+        )
+        return redirect('/tasks/')
