@@ -6,9 +6,11 @@
 <section>
     <!-- Podemos iterar un objeto con un for de la siguiente manera -->
     {% for project in projects %}
-    <div>
-        <h2>{{ project.name }}</h2>
-    </div>
+    <a href="{% url 'project' project.id%}">
+        <div>
+            <h2>{{ project.name }}</h2>
+        </div>
+    </a>
     {% endfor %}
 </section>
 {% endblock%}

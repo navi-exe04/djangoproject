@@ -1,10 +1,17 @@
 {# Podemos mandar a llamar a otras templates a usar#}
 {% extends './layouts/base.html' %}
 
+{# load static nos permite cargar contenido estatico como estilos, imagenes, etc#}
+{% load static %}
+
 {# Y definimos el bloque que vamos a mostrar despues#}
 {% block content%}
 <!-- Podemos usar las dobles llaves para procesar datos que vienen de la funcion -->
 <h1>{{ title }}</h1>
+
+{# Para cargar el contenido estatico necesitamos especificarlo #}
+<img src="{% static 'one-piece.ico' %}">
+
 <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis aliquid, quos consequatur impedit amet non molestias,
     distinctio laboriosam tempore nihil dignissimos? Assumenda sint ipsum quam a accusantium nostrum, quas voluptatibus!

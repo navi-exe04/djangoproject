@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from .models import Project, Task
 # esta funcion permite obtener un objeto o mandar un error 404 directamente
 from django.shortcuts import get_object_or_404, render, redirect
-from .forms import CreateNewTask
+from .forms import CreateNewTask, CreateNewProject
 
 # Create your views here.
 
@@ -62,4 +62,28 @@ def create_task(request):
             description=request.POST['description'],
             project_id=2
         )
-        return redirect('/tasks/')
+        return redirect('tasks')
+
+
+def create_project(request):
+    if request.method == 'GET':
+        return render(request, 'create_project.html', {
+            'form': CreateNewProject()
+        })
+    else:
+        # podemos procesar informacion recibida desde front
+        Project.objects.create(
+            name=request.POST['name'],
+        )
+        return redirect('projects')
+
+
+def project_details(request, id):
+    # obtenemos el proyecto en especifico
+    project = get_object_or_404(Project, id=id)
+    # obtenemos las tasks del proyecto
+    tasks = Task.objects.filter(project_id=id)
+    return render(request, 'project_details.html', {
+        'project': project,
+        'tasks': tasks
+    })

@@ -1,24 +1,42 @@
-{# Podemos crear templates que se pueden usar en otras vistas #}
-<nav>
-    <ul>
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li>
-            <a href="/about">About</a>
-        </li>
-        <li>
-            <a href="/projects">Projects</a>
-        </li>
-        <li>
-            <a href="/tasks">Tasks</a>
-        </li>
-        <li>
-            <a href="/create_task">Create task</a>
-        </li>
-    </ul>
-</nav>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{# Definimos un block content vacio porque no sabemos que otros templates se usaran#}
-{% block content %}
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/styles/main.css'%}">
+</head>
+
+<body>
+    {# Podemos crear templates que se pueden usar en otras vistas #}
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index'%}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'about'%}">About</a>
+            </li>
+            <li>
+                <a href="{% url 'projects'%}">Projects</a>
+            </li>
+            <li>
+                <a href="{% url 'tasks'%}">Tasks</a>
+            </li>
+            <li>
+                <a href="{% url 'create_task'%}"">Create task</a>
+            </li>
+            <li>
+                <a href=" {% url 'create_project' %}">Create project</a>
+            </li>
+        </ul>
+    </nav>
+
+    {# Definimos un block content vacio porque no sabemos que otros templates se usaran#}
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>
